@@ -7,16 +7,17 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<main>
-  <a [routerLink]="['/']">
-    <header class="brand-name">
-      <img class="brand-logo" src="/assets/Logo.png" alt="logo" aria-hidden="true" style="width: 64px">
-    </header>
-  </a>
-  <section class="">
-    <router-outlet></router-outlet>
-  </section>
-</main>
+<section>
+  <form>
+    <input type="text" placeholder="Filter by city" #filter>
+    <button class="secondary" type="button" style="color: #00F;" (click)="filterResults(filter.value)">Search</button>
+  </form>
+</section>
+<section class="results">
+  <app-housing-location
+   *ngFor="let housingLocation of filteredLocationList"
+   [housingLocation]="housingLocation"></app-housing-location>
+</section>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
@@ -25,3 +26,4 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
